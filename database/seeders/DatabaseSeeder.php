@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Company;
+use App\Models\Status;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +26,14 @@ class DatabaseSeeder extends Seeder
 
         Status::factory()->create(['name' => 'Participa']);
         Status::factory()->create(['name' => 'No participa']);
+
+        // Generate unique votes. Ensure idea_id and user_id are unique for each row
+        foreach (range(1, 20) as $user_id) {
+            Company::factory()->create([
+                'user_id' => $user_id
+            ]);
+        }
+            
 
 
     }
