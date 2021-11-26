@@ -15,4 +15,14 @@ class Company extends Model
         'urls' => 'array' // $table->json('urls') need the casting:
     ];
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
+
 }

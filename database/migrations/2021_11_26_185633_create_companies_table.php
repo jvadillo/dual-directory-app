@@ -20,7 +20,9 @@ class CreateCompaniesTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();
             $table->foreignId('status_id')->constrained();
+            
             $table->string('name');
+            $table->string('email');
             $table->text('profile');
             $table->text('interest');
             $table->text('offer');
