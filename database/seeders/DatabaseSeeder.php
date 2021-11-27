@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Company;
 use App\Models\Status;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +17,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(20)->create();
+
+        User::factory()->create([
+            'name' => 'Jon',
+            'email' => 'jvadillo@egibide.org',
+            'password' => bcrypt('12345Abcde'),
+        ]);
+
+        User::factory(20)->create();
 
 
         Category::factory()->create(['name' => 'Desarrollo de Software / IT']);

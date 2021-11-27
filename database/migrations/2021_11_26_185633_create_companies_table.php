@@ -29,7 +29,8 @@ class CreateCompaniesTable extends Migration
             $table->text('technologies');
             $table->json('urls'); // We want to store a list of strings. $cast in Model is needed
             $table->string('video_url')->nullable();
-            $table->text('description');
+            $table->string('location');
+            $table->boolean('international');
             
             // TODO: presentation, documents,...
 

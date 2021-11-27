@@ -12,19 +12,6 @@ class CompanyFactory extends Factory
      *
      * @return array
      */
-
-    $table->foreignId('user_id')->constrained();
-    $table->foreignId('category_id')->constrained();
-    $table->foreignId('status_id')->constrained();
-    $table->string('name');
-    $table->string('email');
-    $table->text('profile');
-    $table->text('interest');
-    $table->text('offer');
-    $table->text('technologies');
-    $table->json('urls'); // We want to store a list of strings. $cast in Model is needed
-    $table->string('video_url')->nullable();
-
     public function definition()
     {
         return [
@@ -36,6 +23,10 @@ class CompanyFactory extends Factory
             'technologies' => $this->faker->text($maxNbChars = 100),
             'urls' => $this->faker->url(),
             'video_url' => $this->faker->url(),
+            
+            'category_id' => $this->faker->numberBetween(1, 4),
+            'status_id' => $this->faker->numberBetween(1, 2),
+            
         ];
     }
 
