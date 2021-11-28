@@ -17,11 +17,13 @@ class CompanyFactory extends Factory
         return [
             'name' => $this->faker->company(),
             'email' => $this->faker->unique()->safeEmail(),
+            'phone' => $this->faker->phoneNumber(),
+            'location' => $this->faker->streetAddress(),
             'profile' => $this->faker->text($maxNbChars = 1000),
-            'interest' => $this->faker->text($maxNbChars = 500),
             'offer' => $this->faker->text($maxNbChars = 300),
-            'technologies' => $this->faker->text($maxNbChars = 100),
-            'urls' => $this->faker->url(),
+            //'technologies' => $this->faker->text($maxNbChars = 100),
+            'website' => $this->faker->url(),
+            'linkedin' => $this->faker->url(),
             'video_url' => $this->faker->url(),
             
             'category_id' => $this->faker->numberBetween(1, 4),

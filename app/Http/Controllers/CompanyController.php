@@ -28,4 +28,10 @@ class CompanyController extends Controller
         return view('company.create');
     }
 
+    public function store(Request $request)
+    {
+        Company::create($request->all());
+        return redirect()->route('company.index');
+    }
+
 }

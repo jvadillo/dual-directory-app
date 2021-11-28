@@ -9,10 +9,17 @@ class Company extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     // Attribute Casting
-    
+    /* Note: not using for the moment
     protected $casts = [
         'urls' => 'array' // $table->json('urls') need the casting:
+    ];
+    */
+
+    protected $attributes = [
+        'user_id' => 1,
     ];
 
     public function category()

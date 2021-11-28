@@ -21,103 +21,110 @@ Crear nueva empresa
         Completa el formulario para dar de alta una nueva empresa. Una vez registrada la empresa podrás modificar los campos cuando quieras.
       </p>
     </div>
-    <form action="#" method="POST">
+    <form action="{{ route('company.store')}}" method="POST">
+    @csrf
+
+    <input type="hidden" name="status_id" value="1">
+
       <div class="shadow sm:rounded-md sm:overflow-hidden">
         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
           <div class="grid grid-cols-6 gap-6">
 
             <div class="col-span-6 sm:col-span-6">
               <label for="name" class="block text-sm font-medium text-gray-700">Nombre de la empresa</label>
-              <input type="text" name="name" id="name" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="name" id="name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
-            
-
             <div class="col-span-6 sm:col-span-3">
-              <label for="company-website" class="block text-sm font-medium text-gray-700">
+              <label for="website" class="block text-sm font-medium text-gray-700">
                 Página web
               </label>
               <div class="mt-1 flex rounded-md shadow-sm">
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   http://
                 </span>
-                <input type="text" name="company-website" id="company-website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
+                <input type="text" name="website" id="website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
               </div>  
             </div>
 
             <div class="col-span-6 sm:col-span-3">
-              <label for="company-website" class="block text-sm font-medium text-gray-700">
+              <label for="linkedin" class="block text-sm font-medium text-gray-700">
                 Página de LinkedIn
               </label>
               <div class="mt-1 flex rounded-md shadow-sm">
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   http://
                 </span>
-                <input type="text" name="company-website" id="company-website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
+                <input type="text" name="linkedin" id="linkedin" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
               </div>
             </div>
 
-            <div class="col-span-6 sm:col-span-6">
-              <label for="country" class="block text-sm font-medium text-gray-700">Tipo de empresa</label>
-              <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option>Industrial o de producción</option>
-                <option>Ingeniería de servicios</option>
-                <option>Desarrollo de Software</option>
-                <option>Centro tecnológico</option>
-                <option>Otro</option>
+            <div class="col-span-6 sm:col-span-3">
+              <label for="location" class="block text-sm font-medium text-gray-700">Localización</label>
+              <input type="text" name="location" id="location" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <div class="col-span-6 sm:col-span-3">
+              <label for="category_id" class="block text-sm font-medium text-gray-700">Tipo de empresa</label>
+              <select id="category_id" name="category_id" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <option value="1">Industrial o de producción</option>
+                <option value="2">Ingeniería de servicios</option>
+                <option value="3">Desarrollo de Software</option>
+                <option value="4">Centro tecnológico</option>
+                <option value="5">Otro</option>
               </select>
             </div>
             
             <div class="col-span-6 sm:col-span-3 gap-3">
-              <label for="first-name" class="block text-sm font-medium text-gray-700">Email de contacto</label>
+              <label for="email" class="block text-sm font-medium text-gray-700">Email de contacto</label>
               <p class="mt-1 text-sm text-gray-500">
               No se mostrará a los estudiantes.
               </p>
-              <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="email" name="email" id="email" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div class="col-span-6 sm:col-span-3">
-              <label for="last-name" class="block text-sm font-medium text-gray-700">Teléfono de contacto</label>
+              <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono de contacto</label>
               <p class="mt-1 text-sm text-gray-500">
               No se mostrará a los estudiantes.
               </p>
-              <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="phone" id="phone" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
           </div>
 
           <div>
-            <label for="about" class="block text-sm font-medium text-gray-700">
+            <label for="profile" class="block text-sm font-medium text-gray-700">
               Perfil / Descripción de la empresa
             </label>
             <div class="mt-1">
-              <textarea id="about" name="about" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
+              <textarea id="profile" name="profile" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
             </div>
           </div>
 
           <div>
-            <label for="about" class="block text-sm font-medium text-gray-700">
+            <label for="offer" class="block text-sm font-medium text-gray-700">
               Proyectos o actividades que puede realizar el estudiante
             </label>
             <div class="mt-1">
-              <textarea id="about" name="about" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
+              <textarea id="offer" name="offer" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
             </div>
           </div>
 
           <div class="col-span-6 sm:col-span-6">
-              <label for="name" class="block text-sm font-medium text-gray-700">Presentación</label>
-              <input class="block w-full cursor-pointer leading-7 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" aria-describedby="user_avatar_help" id="user_avatar" type="file">
+              <label for="presentation" class="block text-sm font-medium text-gray-700">Presentación</label>
+              <input class="block w-full cursor-pointer leading-7 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" aria-describedby="user_avatar_help" id="presentation" type="file" name="presentation">
               <p class="mt-1 text-sm text-gray-500" id="user_avatar_help">Puede subir una presentación en formatp PDF o PowerPoint</p>
           </div>
 
           <div class="col-span-6 sm:col-span-4">
-              <label for="email-address" class="block text-sm font-medium text-gray-700">Enlace a vídeo</label>
-              <input type="text" name="email-address" id="email-address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <label for="video_url" class="block text-sm font-medium text-gray-700">Enlace a vídeo</label>
+              <input type="text" name="video_url" id="video_url" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
           </div>
 
           <div class="col-span-6 sm:col-span-6">
-              <label for="name" class="block text-sm font-medium text-gray-700">Foto</label>
-              <input class="block w-full cursor-pointer leading-7 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" aria-describedby="user_avatar_help" id="user_avatar" type="file">
+              <label for="photo" class="block text-sm font-medium text-gray-700">Foto</label>
+              <input class="block w-full cursor-pointer leading-7 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" aria-describedby="photo" id="photo" name="photo" type="file">
               <p class="mt-1 text-sm text-gray-500" id="user_avatar_help">La foto se utilizará en la página principal del directorio de empresas.</p>
           </div>
 

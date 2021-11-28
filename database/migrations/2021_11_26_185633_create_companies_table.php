@@ -23,14 +23,15 @@ class CreateCompaniesTable extends Migration
             
             $table->string('name');
             $table->string('email');
+            $table->string('phone');
+            $table->string('website');
+            $table->string('linkedin');
             $table->text('profile');
-            $table->text('interest');
             $table->text('offer');
-            $table->text('technologies');
-            $table->json('urls'); // We want to store a list of strings. $cast in Model is needed
+            //$table->json('urls'); // We want to store a list of strings. $cast in Model is needed
             $table->string('video_url')->nullable();
             $table->string('location');
-            $table->boolean('international');
+            //$table->boolean('international');
             
             // TODO: presentation, documents,...
 
