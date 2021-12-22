@@ -30,6 +30,7 @@ class CreateCompaniesTable extends Migration
             $table->string('short_description');
             $table->text('profile');
             $table->text('offer');
+            $table->text('presentation')->nullable();
             //$table->json('urls'); // We want to store a list of strings. $cast in Model is needed
             $table->string('video_url')->nullable();
             $table->string('location');

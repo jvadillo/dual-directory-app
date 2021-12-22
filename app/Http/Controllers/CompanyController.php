@@ -47,6 +47,13 @@ class CompanyController extends Controller
             $input['image'] = "$profileImage";
         }
 
+        if ($presentation = $request->file('presentation')) {
+            $destinationPath = 'presentations/';
+            $presentationName = date('YmdHis') . "." . $presentation->getClientOriginalExtension();
+            $presentation->move($destinationPath, $presentationName);
+            $input['presentation'] = "$presentation";
+        }
+
         Company::create($input);
         
         return redirect()->route('company.index')

@@ -106,7 +106,7 @@ Crear nueva empresa
               Perfil / Descripción de la empresa
             </label>
             <div class="mt-1">
-              <textarea id="profile" name="profile" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Escribe aquí una descripción de la empresa para que los estudiantes puedan conocerla."></textarea>
+              <textarea id="profile" name="profile" rows="5" class="ckeditor shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Escribe aquí una descripción de la empresa para que los estudiantes puedan conocerla."></textarea>
             </div>
           </div>
 
@@ -187,8 +187,8 @@ Crear nueva empresa
   </div>
 </div>
 
+@endsection
 
-
-
+@section('body-scripts')
 
 @endsection
