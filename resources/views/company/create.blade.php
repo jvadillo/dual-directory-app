@@ -21,7 +21,7 @@ Crear nueva empresa
         Completa el formulario para dar de alta una nueva empresa. Una vez registrada la empresa podrás modificar los campos cuando quieras.
       </p>
     </div>
-    <form action="{{ route('company.store')}}" method="POST">
+    <form action="{{ route('company.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <input type="hidden" name="status_id" value="1">
@@ -33,6 +33,14 @@ Crear nueva empresa
             <div class="col-span-6 sm:col-span-6">
               <label for="name" class="block text-sm font-medium text-gray-700">Nombre de la empresa</label>
               <input type="text" name="name" id="name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <div class="col-span-6 sm:col-span-6">
+              <label for="short_description" class="block text-sm font-medium text-gray-700">Descripción breve de la empresa (max. 250 caracteres)</label>
+              <p class="mt-1 text-sm text-gray-500">
+              Esta descripción breve se utilizará en el directorio principal.
+              </p>
+              <input type="text" name="short_description" id="short_description" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div class="col-span-6 sm:col-span-3">
@@ -98,7 +106,7 @@ Crear nueva empresa
               Perfil / Descripción de la empresa
             </label>
             <div class="mt-1">
-              <textarea id="profile" name="profile" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
+              <textarea id="profile" name="profile" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Escribe aquí una descripción de la empresa para que los estudiantes puedan conocerla."></textarea>
             </div>
           </div>
 
@@ -107,7 +115,7 @@ Crear nueva empresa
               Proyectos o actividades que puede realizar el estudiante
             </label>
             <div class="mt-1">
-              <textarea id="offer" name="offer" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
+              <textarea id="offer" name="offer" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Desribe los tipos de proyectos en los que podrá participar el estudiante, actividades que podrá realizar durante su formación dual, o si lo sabes incluso tecnologías con las que podrá trabajar. De esta forma podrán conocer la empresa mucho mejor."></textarea>
             </div>
           </div>
 
@@ -123,8 +131,8 @@ Crear nueva empresa
           </div>
 
           <div class="col-span-6 sm:col-span-6">
-              <label for="photo" class="block text-sm font-medium text-gray-700">Foto</label>
-              <input class="block w-full cursor-pointer leading-7 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" aria-describedby="photo" id="photo" name="photo" type="file">
+              <label for="image" class="block text-sm font-medium text-gray-700">Foto</label>
+              <input class="block w-full cursor-pointer leading-7 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" aria-describedby="photo" id="image" name="image" type="file">
               <p class="mt-1 text-sm text-gray-500" id="user_avatar_help">La foto se utilizará en la página principal del directorio de empresas.</p>
           </div>
 

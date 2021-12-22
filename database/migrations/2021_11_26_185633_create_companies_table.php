@@ -22,6 +22,7 @@ class CreateCompaniesTable extends Migration
             $table->foreignId('status_id')->constrained();
             
             $table->string('name');
+            $table->string('image');
             $table->string('email');
             $table->string('phone');
             $table->string('website');

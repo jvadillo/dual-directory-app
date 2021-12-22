@@ -30,8 +30,27 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
-        Company::create($request->all());
-        return redirect()->route('company.index');
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        // Antiguo sin imagen:  Company::create($request->all());
+        
+        $input = $request->all();
+  
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
+
+        Company::create($input);
+        
+        return redirect()->route('company.index')
+            ->with('success','Registro creado correctamente.');
     }
 
 }
