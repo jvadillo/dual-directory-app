@@ -26,6 +26,7 @@ class CreateCompaniesTable extends Migration
             $table->string('phone');
             $table->string('website');
             $table->string('linkedin');
+            $table->string('short_description');
             $table->text('profile');
             $table->text('offer');
             //$table->json('urls'); // We want to store a list of strings. $cast in Model is needed

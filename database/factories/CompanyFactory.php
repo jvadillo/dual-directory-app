@@ -19,6 +19,7 @@ class CompanyFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
             'location' => $this->faker->streetAddress(),
+            'short_description' => $this->faker->text($maxNbChars = 250),
             'profile' => $this->faker->text($maxNbChars = 1000),
             'offer' => $this->faker->text($maxNbChars = 300),
             //'technologies' => $this->faker->text($maxNbChars = 100),
