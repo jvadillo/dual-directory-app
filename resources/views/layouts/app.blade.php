@@ -27,6 +27,17 @@
                         @yield('cabecera-section')
                     </p>
                 </div>
+                <div>
+                @auth
+                    <p>{{ Auth::user()->name }} (<a href="{{ route('logout') }}">Desconectar</a>)</p>
+                @else
+                    <p>Usuario no conectado</p>
+                @endauth
+
+                    
+                    
+                </div>
+                
             </header>
 
             <!-- Page Content -->

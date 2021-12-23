@@ -49,9 +49,9 @@ class CompanyController extends Controller
 
         if ($presentation = $request->file('presentation')) {
             $destinationPath = 'presentations/';
-            $presentationName = date('YmdHis') . "." . $presentation->getClientOriginalExtension();
+            $presentationName = date('YmdHis') . "_" . $presentation->getClientOriginalName() . "." . $presentation->getClientOriginalExtension();
             $presentation->move($destinationPath, $presentationName);
-            $input['presentation'] = "$presentation";
+            $input['presentation'] = "$presentationName";
         }
 
         Company::create($input);

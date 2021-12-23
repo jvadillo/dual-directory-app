@@ -32,7 +32,7 @@ Crear nueva empresa
 
             <div class="col-span-6 sm:col-span-6">
               <label for="name" class="block text-sm font-medium text-gray-700">Nombre de la empresa</label>
-              <input type="text" name="name" id="name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="name" id="name" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div class="col-span-6 sm:col-span-6">
@@ -40,7 +40,7 @@ Crear nueva empresa
               <p class="mt-1 text-sm text-gray-500">
               Esta descripción breve se utilizará en el directorio principal.
               </p>
-              <input type="text" name="short_description" id="short_description" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="short_description" id="short_description" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div class="col-span-6 sm:col-span-3">
@@ -51,7 +51,7 @@ Crear nueva empresa
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   http://
                 </span>
-                <input type="text" name="website" id="website" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
+                <input type="text" name="website" id="website" required class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
               </div>  
             </div>
 
@@ -69,7 +69,7 @@ Crear nueva empresa
 
             <div class="col-span-6 sm:col-span-3">
               <label for="location" class="block text-sm font-medium text-gray-700">Localización</label>
-              <input type="text" name="location" id="location" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="location" id="location" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div class="col-span-6 sm:col-span-3">
@@ -84,11 +84,11 @@ Crear nueva empresa
             </div>
             
             <div class="col-span-6 sm:col-span-3 gap-3">
-              <label for="email" class="block text-sm font-medium text-gray-700">Email de contacto</label>
+              <label for="email" required class="block text-sm font-medium text-gray-700">Email de contacto</label>
               <p class="mt-1 text-sm text-gray-500">
               No se mostrará a los estudiantes.
               </p>
-              <input type="email" name="email" id="email" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="email" required pattern="^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(opendeusto\.es|deusto\.es|egibide\.org)$" name="email" id="email" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div class="col-span-6 sm:col-span-3">
@@ -102,11 +102,11 @@ Crear nueva empresa
           </div>
 
           <div>
-            <label for="profile" class="block text-sm font-medium text-gray-700">
+            <label for="profile" required class="block text-sm font-medium text-gray-700">
               Perfil / Descripción de la empresa
             </label>
             <div class="mt-1">
-              <textarea id="profile" name="profile" rows="5" class="ckeditor shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Escribe aquí una descripción de la empresa para que los estudiantes puedan conocerla."></textarea>
+              <textarea id="profile" required name="profile" rows="5" class="ckeditor shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Escribe aquí una descripción de la empresa para que los estudiantes puedan conocerla."></textarea>
             </div>
           </div>
 
