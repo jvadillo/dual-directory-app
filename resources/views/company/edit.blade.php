@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('cabecera-section')
-Crear nueva empresa
+Editar empresa
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@ Crear nueva empresa
         Completa el formulario para dar de alta una nueva empresa. Una vez registrada la empresa podrás modificar los campos cuando quieras.
       </p>
     </div>
-    <form action="{{ route('company.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('company.update', $company->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <input type="hidden" name="status_id" value="1">
@@ -32,7 +32,7 @@ Crear nueva empresa
 
             <div class="col-span-6 sm:col-span-6">
               <label for="name" class="block text-sm font-medium text-gray-700">Nombre de la empresa</label>
-              <input type="text" name="name" id="name" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="name" id="name" value="{{ isset($company->name) ? $company->name : '' }}" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div class="col-span-6 sm:col-span-6">
@@ -40,7 +40,7 @@ Crear nueva empresa
               <p class="mt-1 text-sm text-gray-500">
               Esta descripción breve se utilizará en el directorio principal.
               </p>
-              <input type="text" name="short_description" id="short-description" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="short_description" id="short-description" value="{{ isset($company->short_description) ? $company->short_description : '' }}" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
               <p id="short-description-counter" class="mt-1 text-sm text-gray-500 text-right">
               0/180 caracteres
               </p>
@@ -54,7 +54,7 @@ Crear nueva empresa
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   http://
                 </span>
-                <input type="text" name="website" id="website" required class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
+                <input type="text" name="website" id="website" value="{{ isset($company->website) ? $company->name : '' }}" required class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
               </div>  
             </div>
 
@@ -66,13 +66,13 @@ Crear nueva empresa
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                   http://
                 </span>
-                <input type="text" name="linkedin" id="linkedin" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
+                <input type="text" name="linkedin" id="linkedin" value="{{ isset($company->linkedin) ? $company->linkedin : '' }}" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
               </div>
             </div>
 
             <div class="col-span-6 sm:col-span-3">
               <label for="location" class="block text-sm font-medium text-gray-700">Localización</label>
-              <input type="text" name="location" id="location" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="location" id="location" value="{{ isset($company->location) ? $company->location : '' }}" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div class="col-span-6 sm:col-span-3">
@@ -91,7 +91,7 @@ Crear nueva empresa
               <p class="mt-1 text-sm text-gray-500">
               No se mostrará a los estudiantes.
               </p>
-              <input type="email" required pattern="^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(opendeusto\.es|deusto\.es|egibide\.org)$" name="email" id="email" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="email" value="{{ isset($company->email) ? $company->email : '' }}" required pattern="^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(opendeusto\.es|deusto\.es|egibide\.org)$" name="email" id="email" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div class="col-span-6 sm:col-span-3">
@@ -99,7 +99,7 @@ Crear nueva empresa
               <p class="mt-1 text-sm text-gray-500">
               No se mostrará a los estudiantes.
               </p>
-              <input type="text" name="phone" id="phone" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="phone" id="phone" value="{{ isset($company->phone) ? $company->phone : '' }}" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
           </div>
@@ -109,7 +109,7 @@ Crear nueva empresa
               Perfil / Descripción de la empresa
             </label>
             <div class="mt-1">
-              <textarea id="profile" required name="profile" rows="5" class="ckeditor shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Escribe aquí una descripción de la empresa para que los estudiantes puedan conocerla."></textarea>
+              <textarea id="profile" required name="profile" rows="5" class="ckeditor shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Escribe aquí una descripción de la empresa para que los estudiantes puedan conocerla.">{{ isset($company->profile) ? $company->profile : '' }}</textarea>
             </div>
           </div>
 
@@ -118,7 +118,8 @@ Crear nueva empresa
               Proyectos o actividades que puede realizar el estudiante
             </label>
             <div class="mt-1">
-              <textarea id="offer" name="offer" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Desribe los tipos de proyectos en los que podrá participar el estudiante, actividades que podrá realizar durante su formación dual, o si lo sabes incluso tecnologías con las que podrá trabajar. De esta forma podrán conocer la empresa mucho mejor."></textarea>
+              <textarea id="offer" name="offer" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Desribe los tipos de proyectos en los que podrá participar el estudiante, actividades que podrá realizar durante su formación dual, o si lo sabes incluso tecnologías con las que podrá trabajar. De esta forma podrán conocer la empresa mucho mejor.">{{ isset($company->offer) ? $company->offer : '' }}
+              </textarea>
             </div>
           </div>
 
@@ -126,18 +127,38 @@ Crear nueva empresa
               <label for="presentation" class="block text-sm font-medium text-gray-700">Presentación</label>
               <input class="block w-full cursor-pointer leading-7 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" aria-describedby="user_avatar_help" id="presentation" type="file" name="presentation">
               <p class="mt-1 text-sm text-gray-500" id="user_avatar_help">Puede subir una presentación en formatp PDF o PowerPoint</p>
+              @if($company->presentation)
+              <ul id="presentacionActualUL" role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
+                <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                  <div class="w-0 flex-1 flex items-center">
+                    <!-- Heroicon name: solid/paper-clip -->
+                    <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
+                    </svg>
+                    <a class="ml-2 flex-1 w-0 truncate" href="/presentations/{{ $company->presentation }}">
+                    {{ $company->presentation }}
+</a>
+                  </div>
+                  <div class="ml-4 flex-shrink-0">
+                    <a id="eliminarPresentacion" href="#" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500">
+                      Eliminar
+                    </a>
+                  </div>
+                </li>
+              </ul>
+              @endif        
           </div>
 
           <div class="col-span-6 sm:col-span-4">
               <label for="video_url" class="block text-sm font-medium text-gray-700">Enlace a vídeo</label>
-              <input type="text" name="video_url" id="video_url" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="text" name="video_url" id="video_url" value="{{ isset($company->video_url) ? $company->video_url : '' }}" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
           </div>
 
           <div class="col-span-6 sm:col-span-6">
               <label for="image" class="block text-sm font-medium text-gray-700">Foto</label>
               <input class="block w-full cursor-pointer leading-7 bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-transparent text-sm rounded-lg" aria-describedby="photo" id="image" name="image" type="file">
               <p class="mt-1 text-sm text-gray-500" id="user_avatar_help">La foto se utilizará en la página principal del directorio de empresas.</p>
-              <img id="preview-image-before-upload" src="https://craftypixels.com/placeholder-image/800x200/878787/ffffff&text=Sube+tu+logotipo+o+imagen+de+empresa"
+              <img id="preview-image-before-upload" src="/image/{{ isset($company->image) ? $company->image : 'company_default_image.png'  }}"
                       alt="imagen subida" style="max-height: 250px;">
           </div>
 
@@ -230,6 +251,16 @@ function countCaracters(e){
     counterText.classList.remove("text-red-500");
   }
 
+}
+
+// Script for showing the caracter counter
+const eliminarPresentacionLink = document.getElementById("eliminarPresentacion");
+eliminarPresentacionLink.addEventListener("click",eliminarPresentacion);
+
+function eliminarPresentacion(e){
+  e.preventDefault();
+  document.getElementById("presentacionActualUL").style = "display:none;";
+  //document.getElementById("presentation").value = "";
 }
 
  

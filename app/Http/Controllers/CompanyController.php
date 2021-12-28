@@ -60,4 +60,52 @@ class CompanyController extends Controller
             ->with('success','Registro creado correctamente.');
     }
 
+    public function edit($id)
+    {
+        //abort_if(Gate::denies('client_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $statuses = \App\Models\Category::all()->pluck('name', 'id');
+
+        //$company->load('status');
+
+        //return view('company.edit', compact('statuses', 'company'));
+        $company = Company::find($id);
+        return view('company.edit', [
+            'company' => $company
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {   
+
+        /*$request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);*/
+       
+        $input = $request->all();
+  
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
+
+        if ($presentation = $request->file('presentation')) {
+            $destinationPath = 'presentations/';
+            $presentationName = date('YmdHis') . "_" . $presentation->getClientOriginalName() . "." . $presentation->getClientOriginalExtension();
+            $presentation->move($destinationPath, $presentationName);
+            $input['presentation'] = "$presentationName";
+        }
+
+        $company = Company::find($id);
+        $company->update($input);
+        
+        return redirect()->route('company.index')
+            ->with('success','Registro actualizado correctamente.');
+
+    }
+
 }
