@@ -19,7 +19,11 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    
+    <div class="relative min-h-screen bg-gray-100">
+
+        <!-- NOTIFICATIONS -->	
+        @include('components/alert-messages')
 
         <!-- Page Heading -->
         <header class="text-blue-500 bg-white body-font shadow mb-2">

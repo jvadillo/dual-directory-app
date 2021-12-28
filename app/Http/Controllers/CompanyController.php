@@ -104,7 +104,7 @@ class CompanyController extends Controller
         $company->update($input);
         
         return redirect()->route('company.index')
-            ->with('success','Registro actualizado correctamente.');
+            ->with('success','Registro actualizado con éxito.');
 
     }
 
