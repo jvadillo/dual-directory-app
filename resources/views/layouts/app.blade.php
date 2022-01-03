@@ -42,7 +42,7 @@
                     <span class="mr-5">| Hola {{ Auth::user()->name }} (<a class="hover:text-gray-900" href="{{ route('logout') }}">Desconectar</a>)</span>
                     @endauth
                 </nav>
-                @auth
+                @can('create-company', $post)
                 <a class="inline-flex items-center py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 text-white bg-blue-500 hover:bg-blue-700 ">SALIR
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                         <path d="M5 12h14M12 5l7 7-7 7"></path>

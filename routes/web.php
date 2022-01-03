@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/companies', [CompanyController::class, 'index'])->name('company.index');
-Route::get('/companies/create', [CompanyController::class, 'create'])->name('company.create')->middleware('auth');
+Route::get('/companies/create', [CompanyController::class, 'create'])->name('company.create')->can('create-company');
 Route::post('/companies', [CompanyController::class, 'store'])->name('company.store');
 Route::get('/companies/{id}', [CompanyController::class, 'show'])->name('company.show');
 Route::get('/companies/{id}/edit', [CompanyController::class, 'edit'])->name('company.edit')->middleware('auth');

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Gate;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
@@ -76,7 +77,15 @@ class CompanyController extends Controller
     }
 
     public function update(Request $request, $id)
-    {   
+    {
+        $company = Company::find($id);
+
+        // Check if the user is the creator of the company or admin
+        if (! Gate::allows('update-company', $company)) {
+            abort(403);
+        } else if (! Gate::allows('isAdmin')) {
+            abort(403);
+        }
 
         /*$request->validate([
             'name' => 'required',
@@ -100,7 +109,7 @@ class CompanyController extends Controller
             $input['presentation'] = "$presentationName";
         }
 
-        $company = Company::find($id);
+        
         $company->update($input);
         
         return redirect()->route('company.index')

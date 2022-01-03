@@ -18,13 +18,24 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
+        // Create admin user
         User::factory()->create([
             'name' => 'Jon',
             'email' => 'jvadillo@egibide.org',
             'password' => bcrypt('12345Abcde'),
+            'role' => 'admin'
         ]);
 
-        User::factory(20)->create();
+        // Create company owner user
+        User::factory()->create([
+            'name' => 'Owner User',
+            'email' => 'owner@company.com',
+            'password' => bcrypt('12345Abcde'),
+            'role' => 'company_owner'
+        ]);
+
+        // Create 20 users that are company owners
+        User::factory(20)->create(['role' => 'company_owner']);
 
 
         Category::factory()->create(['name' => 'Desarrollo de Software / IT']);
@@ -36,13 +47,19 @@ class DatabaseSeeder extends Seeder
         Status::factory()->create(['name' => 'No participa']);
 
         // Generate unique votes. Ensure idea_id and user_id are unique for each row
-        foreach (range(1, 20) as $user_id) {
+        foreach (range(2, 21) as $user_id) {
             Company::factory()->create([
                 'user_id' => $user_id
             ]);
         }
             
-
+        // Create student user
+        User::factory()->create([
+            'name' => 'Student Name',
+            'email' => 'student@deusto.es',
+            'password' => bcrypt('12345Abcde'),
+            'role' => 'user'
+        ]);
 
     }
 }
