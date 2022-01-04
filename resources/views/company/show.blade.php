@@ -7,7 +7,14 @@ Detalle de la empresa {{ $company->name }}
 @section('content')
 <div class=" flex justify-center mx-auto py-6 max-w-5xl">
   <div class="bg-white shadow-lg overflow-hidden sm:rounded-lg">
-    <div class="px-4 py-12 sm:px-6 bg-gradient-to-r from-blue-600 to-green-500 text-center text-white">
+    <div class="relative px-4 py-12 sm:px-6 bg-gradient-to-r from-blue-600 to-green-500 text-center text-white">
+      @can('update-company',$company)
+      <a href="http://dualdirectory.test/companies/{{ $company->id }}/edit" class="absolute top-5 right-5 inline-flex items-center py-1 px-3 focus:outline-none rounded text-base text-blue-500 bg-white hover:bg-blue-700 hover:text-white ">Editar
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+        </svg>
+      </a>
+      @endcan
       <h3 class="text-2xl font-bold leading-7 sm:text-3xl sm:truncate text-white">
       {{ $company->name }}
       </h3>
@@ -17,7 +24,7 @@ Detalle de la empresa {{ $company->name }}
           <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
         </svg>
         <span class="">{{ $company->location }}</span>
-</p>
+      </p>
     </div>
     <div class="border-t border-gray-200">
       <dl>

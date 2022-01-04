@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\Company;
 
 class RegisteredUserController extends Controller
 {
@@ -39,11 +40,31 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        if($request->accountType == 'user'){
+            $user_role = 'user';
+        } else {
+            $user_role = 'company_owner';
+        }
+
+
         $user = User::create([
-            'name' => $request->name,
+            'name' => 'nomre_inventado',
             'email' => $request->email,
+            'role' => $user_role,
             'password' => Hash::make($request->password),
         ]);
+
+        // If we are registering a company owner we must create the company
+        if($user_role == 'company_owner'){
+            $companyData = [
+                'user_id' => $user->id,
+                'name' => $request->companyName,
+                'email' => $request->email,
+                'category_id' => 1, // Asign first category as a value is required
+                'status_id' => 1, // Participa
+            ];
+            Company::create($companyData);
+        }
 
         event(new Registered($user));
 

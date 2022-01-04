@@ -22,18 +22,18 @@ class CreateCompaniesTable extends Migration
             $table->foreignId('status_id')->constrained();
             
             $table->string('name');
-            $table->string('image');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('website');
-            $table->string('linkedin');
-            $table->string('short_description');
-            $table->text('profile');
-            $table->text('offer');
+            $table->string('image')->default('default-image.jpg');
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('website')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('short_description')->nullable();
+            $table->text('profile')->nullable();
+            $table->text('offer')->nullable();
             $table->text('presentation')->nullable();
             //$table->json('urls'); // We want to store a list of strings. $cast in Model is needed
             $table->string('video_url')->nullable();
-            $table->string('location');
+            $table->string('location')->nullable();
             //$table->boolean('international');
             
             // TODO: presentation, documents,...

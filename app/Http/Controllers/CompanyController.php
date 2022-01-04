@@ -34,7 +34,7 @@ class CompanyController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // Antiguo sin imagen:  Company::create($request->all());

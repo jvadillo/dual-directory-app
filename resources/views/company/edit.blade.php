@@ -16,9 +16,9 @@ Editar empresa
 
   <div class="mt-5 md:mt-0">
     <div class="px-4 py-4 sm:px-0">
-      <h3 class="text-lg font-medium leading-6 text-gray-900">Profile</h3>
+      <h3 class="text-lg font-medium leading-6 text-gray-900">Editar perfil de empresa</h3>
       <p class="mt-1 text-sm text-gray-600">
-        Completa el formulario para dar de alta una nueva empresa. Una vez registrada la empresa podrás modificar los campos cuando quieras.
+        Utiliza este formulario para modificar todos los datos de tu empresa.
       </p>
     </div>
     <form action="{{ route('company.update', $company->id)}}" method="POST" enctype="multipart/form-data">

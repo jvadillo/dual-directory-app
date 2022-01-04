@@ -34,6 +34,14 @@ class DatabaseSeeder extends Seeder
             'role' => 'company_owner'
         ]);
 
+        // Create company owner user
+        User::create([
+            'name' => 'Otro Owner User',
+            'email' => 'owner2@company.com',
+            'password' => bcrypt('12345Abcde'),
+            'role' => 'company_owner'
+        ]);
+
         // Create 20 users that are company owners
         User::factory(20)->create(['role' => 'company_owner']);
 
@@ -42,6 +50,7 @@ class DatabaseSeeder extends Seeder
         Category::factory()->create(['name' => 'Producción industrial']);
         Category::factory()->create(['name' => 'Ingeniería']);
         Category::factory()->create(['name' => 'Centro tecnológico']);
+        Category::factory()->create(['name' => 'Otro']);
 
         Status::factory()->create(['name' => 'Participa']);
         Status::factory()->create(['name' => 'No participa']);

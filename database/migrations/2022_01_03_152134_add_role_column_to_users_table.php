@@ -16,7 +16,7 @@ class AddRoleColumnToUsersTable extends Migration
 
         // Add roles to user table
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('role',  ['admin', 'company_owner', 'user'])->default('user');
+            $table->enum('role',  ['admin', 'company_owner', 'user']);
         });
     }
 
@@ -28,7 +28,7 @@ class AddRoleColumnToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('role');
         });
     }
 }

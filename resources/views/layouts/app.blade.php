@@ -36,23 +36,37 @@
                 </a>
                 <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                     <!-- LINK NORMAL <a class="mr-5 hover:text-gray-900">First Link</a>-->
-                    <a class="mr-5 hover:text-blue-900">About</a>
-                    <a class="mr-5 hover:text-gray-900">Contacto</a>
+                    <a href="/companies" class="mr-5 text-gray-500 hover:text-gray-800">Inicio</a>
+                    <a class="mr-5 text-gray-500 hover:text-gray-800">About</a>
+                    <a class="mr-5 text-gray-500 hover:text-gray-800">Contacto</a>
+                    <span class="mr-5 text-gray-500">|</span>
                     @auth
-                    <span class="mr-5">| Hola {{ Auth::user()->name }} (<a class="hover:text-gray-900" href="{{ route('logout') }}">Desconectar</a>)</span>
+                    <span class="mr-5 text-gray-500 hover:text-gray-800">Hola, {{ Auth::user()->name }}</span>
                     @endauth
                 </nav>
-                @can('create-company', $post)
-                <a class="inline-flex items-center py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 text-white bg-blue-500 hover:bg-blue-700 ">SALIR
+                @can('create-company')
+                <a href="{{ route('company.edit', Auth::user()->company->id) }}" class="mr-3 inline-flex items-center py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 text-blue-500 border border-blue-500 bg-white hover:bg-blue-700 hover:text-white ">MI EMPRESA
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                </a>
+                @endcan
+                @auth
+                <a href="{{ route('logout') }}" class="inline-flex items-center py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 text-white bg-blue-500 hover:bg-blue-700 ">SALIR
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                     </svg>
                 </a>
                 @endauth
                 @guest
-                <a class="inline-flex items-center py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 text-white bg-blue-500 hover:bg-blue-700 ">ACCEDER
+                <a href="{{ route('login') }}" class="mr-3 inline-flex items-center py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 text-white bg-blue-500 hover:bg-blue-700 ">ACCEDER
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                    </svg>
+                </a>
+                <a href="{{ route('register') }}" class="inline-flex items-center py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 text-white bg-blue-500 hover:bg-blue-700 ">DARME DE ALTA
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
                     </svg>
                 </a>
                 @endguest
