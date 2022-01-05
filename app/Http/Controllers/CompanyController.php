@@ -81,9 +81,7 @@ class CompanyController extends Controller
         $company = Company::find($id);
 
         // Check if the user is the creator of the company or admin
-        if (! Gate::allows('update-company', $company)) {
-            abort(403);
-        } else if (! Gate::allows('isAdmin')) {
+        if (!Gate::allows('update-company', $company) && !Gate::allows('isAdmin')) {
             abort(403);
         }
 

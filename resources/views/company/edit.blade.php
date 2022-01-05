@@ -11,10 +11,7 @@ Editar empresa
 
 
 <div class=" flex justify-center mx-auto py-6 max-w-5xl">
-
-
-
-  <div class="mt-5 md:mt-0">
+  <div class="mt-5 md:mt-0 md:w-2/3">
     <div class="px-4 py-4 sm:px-0">
       <h3 class="text-lg font-medium leading-6 text-gray-900">Editar perfil de empresa</h3>
       <p class="mt-1 text-sm text-gray-600">

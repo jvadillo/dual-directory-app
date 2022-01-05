@@ -37,7 +37,7 @@
                 <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                     <!-- LINK NORMAL <a class="mr-5 hover:text-gray-900">First Link</a>-->
                     <a href="/companies" class="mr-5 text-gray-500 hover:text-gray-800">Inicio</a>
-                    <a class="mr-5 text-gray-500 hover:text-gray-800">About</a>
+                    <a class="mr-5 text-gray-500 hover:text-gray-800">Preguntas frecuentes</a>
                     <a class="mr-5 text-gray-500 hover:text-gray-800">Contacto</a>
                     <span class="mr-5 text-gray-500">|</span>
                     @auth
@@ -45,7 +45,7 @@
                     @endauth
                 </nav>
                 @can('create-company')
-                <a href="{{ route('company.edit', Auth::user()->company->id) }}" class="mr-3 inline-flex items-center py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 text-blue-500 border border-blue-500 bg-white hover:bg-blue-700 hover:text-white ">MI EMPRESA
+                <a href="{{ route('company.show', Auth::user()->company->id) }}" class="mr-3 inline-flex items-center py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 text-blue-500 border border-blue-500 bg-white hover:bg-blue-700 hover:text-white ">MI EMPRESA
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
