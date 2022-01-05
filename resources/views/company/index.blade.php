@@ -7,7 +7,17 @@ Listado de empresas
 @section('content')
 
 <div class="h-full bg-gray-100 p-5 container xl:px-24 py-6 mx-auto">
+<!--<div class="relative w-full md:max-w-2xl md:mx-auto text-center">
+      <h1
+        class=" text-gray-700 text-xl sm:text-2xl md:text-3xl leading-tight mb-6 uppercase"
+      >
+        Directorio de empresas
+      </h1>
 
+      <p class="text-gray-600 md:text-xl md:px-18">
+        Encuentra aquí toda la información sobre las empresas participantes.
+      </p>
+</div>-->
   <!-- BUSCADOR -->
   <div class="mx-auto mt-3 mb-8 bg-white shadow-lg border rounded-md lg:w-96 focus-within:ring ring-primary focus-within:border-blue-300">
     <form action="/search" class="flex flex-wrap justify-between md:flex-row">

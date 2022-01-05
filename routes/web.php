@@ -25,11 +25,7 @@ Route::post('/companies/{id}', [CompanyController::class, 'update'])->name('comp
 Route::resource('users', UserController::class)->middleware(['auth']);
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return view('landing.index');
+})->name('landing.index');
 
 require __DIR__.'/auth.php';

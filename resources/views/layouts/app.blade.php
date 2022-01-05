@@ -28,7 +28,7 @@
         <!-- Page Heading -->
         <header class="text-blue-500 bg-white body-font shadow mb-2">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-                <a href="/companies" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <a href="{{ route('landing.index') }}" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-gradient-to-r from-blue-500 to-green-500 rounded-full" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
                     </svg>
@@ -36,9 +36,11 @@
                 </a>
                 <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
                     <!-- LINK NORMAL <a class="mr-5 hover:text-gray-900">First Link</a>-->
-                    <a href="/companies" class="mr-5 text-gray-500 hover:text-gray-800">Inicio</a>
+                    <a href="{{ route('landing.index') }}" class="mr-5 text-gray-500 hover:text-gray-800">Inicio</a>
                     <a class="mr-5 text-gray-500 hover:text-gray-800">Preguntas frecuentes</a>
-                    <a class="mr-5 text-gray-500 hover:text-gray-800">Contacto</a>
+                    @auth
+                    <a href="{{ route('company.index') }}" class="mr-5 text-gray-500 hover:text-gray-800">Directorio</a>
+                    @endauth
                     <span class="mr-5 text-gray-500">|</span>
                     @auth
                     <span class="mr-5 text-gray-500 hover:text-gray-800">Hola, {{ Auth::user()->name }}</span>
