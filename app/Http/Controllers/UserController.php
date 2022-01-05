@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
+
 
 class UserController extends Controller
 {
@@ -15,6 +17,10 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        if(Gate::denies('isAdmin')){
+            abort(403);
+        }
+
         $users = User::all();
         return view('users.index',compact('users'));
     }

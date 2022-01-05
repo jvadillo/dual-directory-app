@@ -22,7 +22,7 @@ Route::get('/companies/{id}', [CompanyController::class, 'show'])->name('company
 Route::get('/companies/{id}/edit', [CompanyController::class, 'edit'])->name('company.edit')->middleware('auth');
 Route::post('/companies/{id}', [CompanyController::class, 'update'])->name('company.update')->middleware('auth');
 
-Route::resource('users', UserController::class);
+Route::resource('users', UserController::class)->middleware(['auth']);
 
 Route::get('/', function () {
     return view('welcome');
