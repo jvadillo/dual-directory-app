@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "jvadillo/formaciondual",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Aplicación de formación dual.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
