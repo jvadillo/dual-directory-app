@@ -9,7 +9,7 @@ Detalle de la empresa {{ $company->name }}
   <div class="">
     <div class="relative px-4 py-12 sm:px-6 bg-gradient-to-r from-blue-600 to-green-500 text-center text-white w-full shadow-lg overflow-hidden sm:rounded-lg">
       @can('update-company',$company)
-      <a href="http://dualdirectory.test/companies/{{ $company->id }}/edit" class="absolute top-5 right-5 inline-flex items-center py-1 px-3 focus:outline-none rounded text-base text-blue-500 bg-white hover:bg-blue-700 hover:text-white ">Editar
+      <a href="{{ route('company.edit',$company->id) }}" class="absolute top-5 right-5 inline-flex items-center py-1 px-3 focus:outline-none rounded text-base text-blue-500 bg-white hover:bg-blue-700 hover:text-white ">Editar
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
         </svg>
