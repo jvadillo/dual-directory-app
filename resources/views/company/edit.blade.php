@@ -88,7 +88,7 @@ Editar empresa
               <p class="mt-1 text-sm text-gray-500">
               No se mostrará a los estudiantes.
               </p>
-              <input type="email" value="{{ isset($company->email) ? $company->email : '' }}" required pattern="^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(opendeusto\.es|deusto\.es|egibide\.org)$" name="email" id="email" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              <input type="email" value="{{ isset($company->email) ? $company->email : '' }}" required name="email" id="email" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div class="col-span-6 sm:col-span-3">

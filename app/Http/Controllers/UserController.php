@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Rules\DeustoEmailValidation;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Gate;
 
