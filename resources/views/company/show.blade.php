@@ -5,7 +5,7 @@ Detalle de la empresa {{ $company->name }}
 @endsection
 
 @section('content')
-<div class=" flex justify-center mx-auto py-6 max-w-5xl">
+<div class=" flex justify-center mx-auto pb-6 md:py-6 max-w-5xl">
   <div class="">
     <div class="relative px-4 py-12 sm:px-6 bg-gradient-to-r from-blue-600 to-green-500 text-center text-white w-full shadow-lg overflow-hidden sm:rounded-lg">
       @can('update-company',$company)
@@ -28,7 +28,7 @@ Detalle de la empresa {{ $company->name }}
     </div>
     
     <div class="flex flex-col sm:flex-row mt-4">
-        <div class="sm:w-2/5">
+        <div class="px-3 md:px-0 md:w-2/5">
           <div class="bg-white mr-5 w-full shadow-lg overflow-hidden sm:rounded-lg px-6 py-5">
             <div>
               <p for="about" class="mb-1 text-sm font-medium text-gray-800 font-semibold">
@@ -107,7 +107,7 @@ Detalle de la empresa {{ $company->name }}
             </div>
           </div>
         </div>
-        <div class="sm:w-3/5 pl-5">
+        <div class="px-3 md:px-0 md:w-3/5 md:pl-5">
           <div class="bg-white w-full shadow-lg overflow-hidden sm:rounded-lg px-6 py-5">
             <div class="text-sm">
               <p for="about" class="mb-1 text-sm font-medium text-gray-800 font-semibold">
