@@ -31,6 +31,13 @@ Detalle de la empresa {{ $company->name }}
         <div class="px-3 md:px-0 md:w-2/5">
           <div class="bg-white mr-5 w-full shadow-lg overflow-hidden sm:rounded-lg px-6 py-5">
             <div>
+              <p for="about" class="mb-2 text-sm font-medium text-gray-800 font-semibold">
+                Imágen
+              </p>
+              <img src="/image/{{ $company->image }}" width="500px">
+            </div>
+            <!--
+            <div>
               <p for="about" class="mb-1 text-sm font-medium text-gray-800 font-semibold">
                 Sobre la empresa
               </p>
@@ -38,6 +45,7 @@ Detalle de la empresa {{ $company->name }}
               {{ $company->short_description }}
               </p>
             </div>
+            -->
             <div class="mt-4 text-sm">
               <p for="about" class="mb-1 text-sm font-medium text-gray-800 font-semibold">
                 Categoría
@@ -85,7 +93,10 @@ Detalle de la empresa {{ $company->name }}
               <p for="about" class="mb-1 text-sm font-medium text-gray-800 font-semibold">
                 Vídeo
               </p>
+              @if($company->video_url && $company->video_url!="")
               <a target="_blank" href="http://{{ $company->video_url }}" class="text-blue-600 hover:underline">{{ $company->video_url }} <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline mb-1"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
+              @else
+              <span>No hay videos.</span>
             </div>
           </div>
           <div class="mt-4 bg-white mr-5 w-full shadow-lg overflow-hidden sm:rounded-lg px-6 py-5">
@@ -126,9 +137,6 @@ Detalle de la empresa {{ $company->name }}
               </p>
             </div>
             <div class="mt-4 text-sm">
-              <p for="about" class="mb-2 text-sm font-medium text-gray-800 font-semibold">
-                Imágen principal
-              </p>
               <img src="/image/{{ $company->image }}" width="500px">
             </div>
           </div>
