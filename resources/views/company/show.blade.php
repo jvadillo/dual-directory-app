@@ -100,6 +100,7 @@ Detalle de la empresa {{ $company->name }}
               @endif
             </div>
           </div>
+          @can('update-company',$company)
           <div class="mt-4 bg-white mr-5 w-full shadow-lg overflow-hidden sm:rounded-lg px-6 py-5">
             <div>
               <p for="about" class="mb-1 text-sm font-medium text-gray-800 font-semibold">
@@ -118,6 +119,7 @@ Detalle de la empresa {{ $company->name }}
               </p>
             </div>
           </div>
+          @endcan
         </div>
         <div class="px-3 md:px-0 md:w-3/5 md:pl-5">
           <div class="bg-white w-full shadow-lg overflow-hidden sm:rounded-lg px-6 py-5">
@@ -125,7 +127,7 @@ Detalle de la empresa {{ $company->name }}
               <p for="about" class="mb-1 text-sm font-medium text-gray-800 font-semibold">
                 Descripción de la empresa
               </p>
-              <p class="text-sm font-medium text-gray-600">
+              <p class="text-sm font-medium text-gray-600 text-justify">
               {!! nl2br($company->profile) !!}
               </p>
             </div>
