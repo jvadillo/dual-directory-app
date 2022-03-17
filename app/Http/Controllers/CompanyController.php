@@ -78,28 +78,20 @@ class CompanyController extends Controller
             ->with('success','Registro creado correctamente.');
     }
 
-    private function store_image_aws(){
-        if($request->hasFile('profile_image')) {
-  
-            //get filename with extension
-            $filenamewithextension = $request->file('profile_image')->getClientOriginalName();
-      
-            //get filename without extension
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-      
-            //get file extension
-            $extension = $request->file('profile_image')->getClientOriginalExtension();
-      
-            //filename to store
-            $filenametostore = $filename.'_'.time().'.'.$extension;
-      
-            //Upload File to s3
-            Storage::disk('s3')->put($filenametostore, fopen($request->file('profile_image'), 'r+'), 'public');
-      
-            //Store $filenametostore in the database
- 
-            return redirect('upload')->with('success', 'File uploaded successfully.');
-        }
+    private function store_image_aws($image){
+        
+        //get filename with extension
+        $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        
+        
+        $s3filePath = '/images/' . $profileImage;
+        Storage::disk('s3')->put($s3filePath, file_get_contents($image), 'public');
+    
+        //Upload File to s3
+        //Storage::disk('s3')->put($s3filePath, fopen($image, 'r+'), 'public');
+    
+        $input['image'] = "$s3filePath";
+        
 
     }
 
@@ -134,13 +126,27 @@ class CompanyController extends Controller
         ]);*/
        
         $input = $request->all();
-  
+        /*
         if ($image = $request->file('image')) {
             $destinationPath = 'image/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
+        }*/
+        if ($image = $request->file('image')) {
+            //get filename with extension
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            
+            
+            $s3filePath = '/images/' . $profileImage;
+            Storage::disk('s3')->put($s3filePath, file_get_contents($image), 'public');
+      
+            //Upload File to s3
+            //Storage::disk('s3')->put($s3filePath, fopen($image, 'r+'), 'public');
+      
+            $input['image'] = "$s3filePath";
         }
+        
 
         if ($presentation = $request->file('presentation')) {
             $destinationPath = 'presentations/';
