@@ -137,9 +137,9 @@ class CompanyController extends Controller
             //get filename with extension
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             
-            
+            $s3 = Storage::disk('s3');
             $s3filePath = '/images/' . $profileImage;
-            Storage::disk('s3')->put($s3filePath, file_get_contents($image), 'public');
+            $s3->put($s3filePath, file_get_contents($image), 'public');
       
             //Upload File to s3
             //Storage::disk('s3')->put($s3filePath, fopen($image, 'r+'), 'public');
